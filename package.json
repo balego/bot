@@ -1,0 +1,28 @@
+{
+  "name": "hubot",
+  "version": "0.0.0",
+  "private": true,
+
+  "author": "Irving Kcam <me@ikcam.com>",
+
+  "description": "Office asshole",
+
+  "dependencies": {
+	"hubot": "^2.18.0",
+	"hubot-slack": "^4.3.2",
+	"hubot-diagnostics": "^0.0.1",
+	"hubot-help": "^0.2.0",
+	"hubot-heroku-keepalive": "^1.0.2",
+	"hubot-google-images": "^0.2.6",
+  "hubot-google-translate": "^0.2.0",
+  "hubot-pugme": "^0.1.0",
+  "hubot-maps": "^0.0.2",
+  "hubot-redis-brain": "^0.0.3",
+  "hubot-rules": "^0.1.1",
+  "hubot-shipit": "^0.2.0"
+  },
+
+  "engines": {
+    "node": "0.10.x"
+  }
+}
