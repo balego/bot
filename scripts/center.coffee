@@ -17,7 +17,11 @@ module.exports = (robot) ->
                     msg.send "Encountered an error :( #{err}"
                     return
 
-                data = JSON.parse body
+                try
+                    data = JSON.parse body
+                catch err
+                    console.log body
+                    data = body
 
                 if data.results.length > 0
                     response = "I found this websites:\n"
