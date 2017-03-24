@@ -8,9 +8,7 @@
 #
 # Commands:
 #   hubot website find <name> - Find a website with the name or URL
-#   website find <name> - Find a website with the name or URL
 #   hubot domain find <name> - Find a domain with the name or URL
-#   domain find <name> - Find a domain with the name or URL
 #
 # Author :
 #   ikcam
