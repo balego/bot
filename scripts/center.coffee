@@ -1,10 +1,9 @@
 module.exports = (robot) ->
-    robot.respond /find website (*.)/i, (res) ->
+    robot.respond /find website (.*)/i, (res) ->
         # Website name
         websiteName = res.match[1]
 
-        robot
-            .http(process.env.CENTER_API_ROOT + "/en/api/websites/websites/")
+        robot.http(process.env.CENTER_API_ROOT + "/en/api/websites/websites/")
             .header("Authorization", "Token: " + process.env.CENTER_TOKEN)
             .get()(err, res, body) ->
                 if err
