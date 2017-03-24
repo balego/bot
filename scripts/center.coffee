@@ -10,7 +10,7 @@
 #   hubot website find <name> - Find a website with the name or URL
 #   hubot domain find <name> - Find a domain with the name or URL
 #
-# Author :
+# Author:
 #   ikcam
 
 center_api = (robot, msg, path, type) ->
