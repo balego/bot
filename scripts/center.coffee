@@ -4,7 +4,7 @@ module.exports = (robot) ->
         websiteName = res.match[1]
 
         robot
-            .http(process.env.CENTER_API_ROOT + "websites/websites/")
+            .http(process.env.CENTER_API_ROOT + "/en/api/websites/websites/")
             .header("Authorization", "Token: " + process.env.CENTER_TOKEN)
             .get()(err, res, body) ->
                 if err
@@ -13,5 +13,5 @@ module.exports = (robot) ->
 
                 res.send "I found this websites:"
                 for website in res.results
-                    res.send website.name + " - https://center.balegogroup.com" + website.url
+                    res.send website.name + " - " + process.env.CENTER_API_ROOT + website.url
 
