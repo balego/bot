@@ -4,13 +4,15 @@ module.exports = (robot) ->
         websiteName = res.match[1]
 
         robot.http(process.env.CENTER_API_ROOT + "/en/api/websites/websites/")
-            .header("Authorization", "Token: " + process.env.CENTER_TOKEN)
-            .get()(err, res, body) ->
+            .header('Authorization', 'Token: ' + process.env.CENTER_TOKEN)
+            .get() (err, res, body) ->
                 if err
                     res.send "Encountered an error :( #{err}"
                     return
 
+                data = JSON.parse body
+
                 res.send "I found this websites:"
-                for website in res.results
+                for website in data.results
                     res.send website.name + " - " + process.env.CENTER_API_ROOT + website.url
 
