@@ -1,18 +1,20 @@
 module.exports = (robot) ->
-    robot.respond /find website (.*)/i, (res) ->
-        # Website name
-        websiteName = res.match[1]
+    robot.respond /website find (.*)/i, (res) ->
+        # Vars
+        website_name = res.match[1]
+        center_url = process.env.CENTER_API_ROOT
+        center_token = process.env.CENTER_TOKEN
 
-        robot.http(process.env.CENTER_API_ROOT + "/en/api/websites/websites/")
-            .header('Authorization', 'Token: ' + process.env.CENTER_TOKEN)
-            .get() (err, res, body) ->
+        robot.http("#{center_url}/en/api/websites/websites/?name=#{website_name}")
+            .header("Authorization", "Token #{center_token}")
+            .get() (err, resp, body) ->
                 if err
-                    res.send "Encountered an error :( #{err}"
+                    res.reply "Encountered an error :( #{err}"
                     return
 
                 data = JSON.parse body
 
-                res.send "I found this websites:"
+                res.reply "I found this websites:"
                 for website in data.results
-                    res.send website.name + " - " + process.env.CENTER_API_ROOT + website.url
+                    res.reply "#{website.name} - #{center_url}#{website.url}"
 
