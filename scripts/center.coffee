@@ -11,6 +11,7 @@ module.exports = (robot) ->
 
         robot.http("#{center_url}/en/api/websites/websites/?name=#{website_name}")
             .header("Authorization", "Token #{center_token}")
+            .header("Accept", "application/json")
             .get() (err, res, body) ->
                 if err
                     msg.send "Encountered an error :( #{err}"
