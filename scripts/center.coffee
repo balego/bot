@@ -14,7 +14,13 @@ module.exports = (robot) ->
 
                 data = JSON.parse body
 
-                res.reply "I found this websites:"
-                for website in data.results
-                    res.reply "#{website.name} - #{center_url}#{website.url}"
+                if data.results.length > 0
+                    response = "I found this websites:\n"
+                    for website in data.results
+                        response += "#{website.name} - #{center_url}#{website.url}\n"
+                else
+                    response = "I coudn't find any website with the name or url: #{website_name}"
+
+                res.reply response
+                return
 
