@@ -13,7 +13,7 @@
 # Author:
 #   ikcam
 
-center_api = (robot, msg, path, type) ->
+center_get = (robot, msg, path, type) ->
     center_url = process.env.CENTER_API_ROOT
     center_token = process.env.CENTER_TOKEN
 
@@ -47,10 +47,10 @@ module.exports = (robot) ->
         name = msg.match[1]
         path = "websites/domains/?name=#{name}"
 
-        response = center_api(robot, msg, path, 'domains')
+        response = center_get(robot, msg, path, 'domains')
 
     robot.respond /website find (.*)/i, (msg) ->
         name = msg.match[1]
         path = "websites/websites/?name=#{name}"
 
-        response = center_api(robot, msg, path, 'websites')
+        response = center_get(robot, msg, path, 'websites')
