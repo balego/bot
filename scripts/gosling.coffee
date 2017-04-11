@@ -8,8 +8,7 @@
 #   HUBOT_TUMBLR_API_KEY
 #
 # Commands:
-#   hubot gos(ling)? me - Receive a programmer Ryan Gosling meme
-#   hubot gos(ling)? bomb N - Receive N programmer Ryan Gosling memes
+#   hubot gosling - Receive a random programmer Ryan Gosling meme
 #
 # Author:
 #   jessedearing
@@ -21,17 +20,6 @@ getRandomGoslingImageUrl = (msg, rand) ->
     post = JSON.parse(body)
     msg.send(post.response.posts[0].photos[0].original_size.url)
 
-getGoslingImage = (msg) ->
-  msg.http("http://api.tumblr.com/v2/blog/programmerryangosling.tumblr.com/posts?api_key=#{api_key}").get() (err, res, body) ->
-    total_posts = JSON.parse(body).response.posts.length
-    rand = Math.floor(Math.random() * total_posts)
-    getRandomGoslingImageUrl(msg, rand)
-
 module.exports = (robot) ->
-  robot.respond /gos(ling)? me/i, (msg) ->
-    getGoslingImage(msg)
-
-  robot.respond /gos(ling)? bomb (\d+)/i, (msg) ->
-    count = msg.match[2] || 5
-    for num in [count..1]
-      getGoslingImage(msg)
+  robot.respond /gosling/i, (msg) ->
+    getRandomGoslingImageUrl(msg)
