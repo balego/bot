@@ -27,12 +27,12 @@ getGoslingImage = (msg) ->
     getRandomGoslingImageUrl(msg, rand)
 
 getRandomDoodleImageUrl = (msg, rand) ->
-  try
-    msg.http("http://api.tumblr.com/v2/blog/reallifedoodles.tumblr.com/posts?api_key=#{api_key}&offset=#{rand}&limit=1").get() (err, res, body) ->
-      post = JSON.parse(body)
+  msg.http("http://api.tumblr.com/v2/blog/reallifedoodles.tumblr.com/posts?api_key=#{api_key}&offset=#{rand}&limit=1").get() (err, res, body) ->
+    post = JSON.parse(body)
+    try
       msg.send(post.response.posts[0].photos[0].original_size.url)
-  catch
-    msg.send(error)
+    catch
+      msg.send(error)
 
 getDoodleImage = (msg) ->
   msg.http("http://api.tumblr.com/v2/blog/reallifedoodles.tumblr.com/posts?api_key=#{api_key}").get() (err, res, body) ->
