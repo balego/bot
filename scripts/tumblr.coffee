@@ -31,7 +31,7 @@ getRandomDoodleImageUrl = (msg, rand) ->
     post = JSON.parse(body)
     try
       msg.send(post.response.posts[0].photos[0].original_size.url)
-    catch
+    catch(error)
       msg.send(error)
 
 getDoodleImage = (msg) ->
